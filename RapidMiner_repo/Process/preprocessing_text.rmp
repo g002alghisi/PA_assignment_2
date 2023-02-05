@@ -15,7 +15,7 @@
       <operator activated="true" class="retrieve" compatibility="9.7.002" expanded="true" height="68" name="Retrieve" width="90" x="45" y="34">
         <parameter key="repository_entry" value="../Data/Temp_video_game_reviews"/>
       </operator>
-      <operator activated="true" class="nominal_to_text" compatibility="9.7.002" expanded="true" height="82" name="Nominal to Text" width="90" x="179" y="34">
+      <operator activated="true" class="nominal_to_text" compatibility="9.7.002" expanded="true" height="82" name="Nominal to Text" width="90" x="246" y="34">
         <parameter key="attribute_filter_type" value="single"/>
         <parameter key="attribute" value="reviewCorpe"/>
         <parameter key="attributes" value=""/>
@@ -29,111 +29,103 @@
         <parameter key="invert_selection" value="false"/>
         <parameter key="include_special_attributes" value="false"/>
       </operator>
-      <operator activated="true" class="subprocess" compatibility="9.7.002" expanded="true" height="82" name="Turbo Prep Process" width="90" x="313" y="34">
+      <operator activated="true" class="subprocess" compatibility="9.7.002" expanded="true" height="124" name="Text preparation and LDA" width="90" x="447" y="34">
         <process expanded="true">
-          <operator activated="true" class="subprocess" compatibility="9.7.002" expanded="true" height="82" name="Subprocess" width="90" x="45" y="34">
+          <operator activated="true" class="text:process_document_from_data" compatibility="9.4.000" expanded="true" height="82" name="Process Documents from Data" width="90" x="246" y="34">
+            <parameter key="create_word_vector" value="false"/>
+            <parameter key="vector_creation" value="Term Occurrences"/>
+            <parameter key="add_meta_information" value="true"/>
+            <parameter key="keep_text" value="true"/>
+            <parameter key="prune_method" value="absolute"/>
+            <parameter key="prune_below_percent" value="3.0"/>
+            <parameter key="prune_above_percent" value="30.0"/>
+            <parameter key="prune_below_absolute" value="2"/>
+            <parameter key="prune_above_absolute" value="999"/>
+            <parameter key="prune_below_rank" value="0.05"/>
+            <parameter key="prune_above_rank" value="0.95"/>
+            <parameter key="datamanagement" value="double_sparse_array"/>
+            <parameter key="data_management" value="auto"/>
+            <parameter key="select_attributes_and_weights" value="false"/>
+            <list key="specify_weights"/>
             <process expanded="true">
-              <operator activated="true" class="nominal_to_text" compatibility="9.7.002" expanded="true" height="82" name="Nominal to Text (2)" width="90" x="45" y="34">
-                <parameter key="attribute_filter_type" value="value_type"/>
-                <parameter key="attribute" value=""/>
-                <parameter key="attributes" value=""/>
-                <parameter key="use_except_expression" value="false"/>
-                <parameter key="value_type" value="nominal"/>
-                <parameter key="use_value_type_exception" value="false"/>
-                <parameter key="except_value_type" value="file_path"/>
-                <parameter key="block_type" value="single_value"/>
-                <parameter key="use_block_type_exception" value="false"/>
-                <parameter key="except_block_type" value="single_value"/>
-                <parameter key="invert_selection" value="false"/>
-                <parameter key="include_special_attributes" value="false"/>
-                <description align="center" color="transparent" colored="false" width="126">Change all categorical columns to text</description>
+              <operator activated="true" class="text:tokenize" compatibility="9.4.000" expanded="true" height="68" name="Tokenize" width="90" x="179" y="34">
+                <parameter key="mode" value="non letters"/>
+                <parameter key="characters" value=".:"/>
+                <parameter key="language" value="English"/>
+                <parameter key="max_token_length" value="3"/>
               </operator>
-              <operator activated="true" class="text_to_nominal" compatibility="9.7.002" expanded="true" height="82" name="Text to Nominal" width="90" x="179" y="34">
-                <parameter key="attribute_filter_type" value="value_type"/>
-                <parameter key="attribute" value=""/>
-                <parameter key="attributes" value=""/>
-                <parameter key="use_except_expression" value="false"/>
-                <parameter key="value_type" value="text"/>
-                <parameter key="use_value_type_exception" value="false"/>
-                <parameter key="except_value_type" value="text"/>
-                <parameter key="block_type" value="value_matrix"/>
-                <parameter key="use_block_type_exception" value="false"/>
-                <parameter key="except_block_type" value="value_matrix_row_start"/>
-                <parameter key="invert_selection" value="false"/>
-                <parameter key="include_special_attributes" value="false"/>
-                <description align="center" color="transparent" colored="false" width="126">Change all text columns to nominal</description>
+              <operator activated="true" class="text:transform_cases" compatibility="9.4.000" expanded="true" height="68" name="Transform Cases" width="90" x="313" y="34">
+                <parameter key="transform_to" value="lower case"/>
               </operator>
-              <operator activated="true" class="numerical_to_real" compatibility="9.7.002" expanded="true" height="82" name="Numerical to Real" width="90" x="313" y="34">
-                <parameter key="attribute_filter_type" value="value_type"/>
-                <parameter key="attribute" value=""/>
-                <parameter key="attributes" value=""/>
-                <parameter key="use_except_expression" value="false"/>
-                <parameter key="value_type" value="numeric"/>
-                <parameter key="use_value_type_exception" value="false"/>
-                <parameter key="except_value_type" value="real"/>
-                <parameter key="block_type" value="value_series"/>
-                <parameter key="use_block_type_exception" value="false"/>
-                <parameter key="except_block_type" value="value_series_end"/>
-                <parameter key="invert_selection" value="false"/>
-                <parameter key="include_special_attributes" value="false"/>
-                <description align="center" color="transparent" colored="false" width="126">Change all numerical columns to real</description>
+              <operator activated="true" class="text:filter_stopwords_english" compatibility="9.4.000" expanded="true" height="68" name="Filter Stopwords (English)" width="90" x="447" y="34"/>
+              <operator activated="true" class="text:stem_snowball" compatibility="9.4.000" expanded="true" height="68" name="Stem (Snowball)" width="90" x="581" y="34">
+                <parameter key="language" value="English"/>
               </operator>
-              <connect from_port="in 1" to_op="Nominal to Text (2)" to_port="example set input"/>
-              <connect from_op="Nominal to Text (2)" from_port="example set output" to_op="Text to Nominal" to_port="example set input"/>
-              <connect from_op="Text to Nominal" from_port="example set output" to_op="Numerical to Real" to_port="example set input"/>
-              <connect from_op="Numerical to Real" from_port="example set output" to_port="out 1"/>
-              <portSpacing port="source_in 1" spacing="0"/>
-              <portSpacing port="source_in 2" spacing="0"/>
-              <portSpacing port="sink_out 1" spacing="0"/>
-              <portSpacing port="sink_out 2" spacing="0"/>
+              <connect from_port="document" to_op="Tokenize" to_port="document"/>
+              <connect from_op="Tokenize" from_port="document" to_op="Transform Cases" to_port="document"/>
+              <connect from_op="Transform Cases" from_port="document" to_op="Filter Stopwords (English)" to_port="document"/>
+              <connect from_op="Filter Stopwords (English)" from_port="document" to_op="Stem (Snowball)" to_port="document"/>
+              <connect from_op="Stem (Snowball)" from_port="document" to_port="document 1"/>
+              <portSpacing port="source_document" spacing="0"/>
+              <portSpacing port="sink_document 1" spacing="0"/>
+              <portSpacing port="sink_document 2" spacing="0"/>
             </process>
-            <description align="center" color="transparent" colored="false" width="126">Unify column types</description>
           </operator>
-          <operator activated="true" class="subprocess" compatibility="9.7.002" expanded="true" height="82" name="Subprocess (2)" origin="GENERATED_TURBOPREP" width="90" x="179" y="34">
-            <process expanded="true">
-              <operator activated="true" class="blending:pivot" compatibility="9.7.002" expanded="true" height="82" name="Pivot" origin="GENERATED_TURBOPREP" width="90" x="45" y="34">
-                <parameter key="group_by_attributes" value=""/>
-                <parameter key="column_grouping_attribute" value=""/>
-                <list key="aggregation_attributes">
-                  <parameter key="reviewCorpe" value="concatenation"/>
-                </list>
-                <parameter key="use_default_aggregation" value="false"/>
-                <parameter key="default_aggregation_function" value="first"/>
-              </operator>
-              <connect from_port="in 1" to_op="Pivot" to_port="input"/>
-              <connect from_op="Pivot" from_port="output" to_port="out 1"/>
-              <portSpacing port="source_in 1" spacing="0"/>
-              <portSpacing port="source_in 2" spacing="0"/>
-              <portSpacing port="sink_out 1" spacing="0"/>
-              <portSpacing port="sink_out 2" spacing="0"/>
-            </process>
-            <description align="center" color="transparent" colored="false" width="126">Aggregate reviewCorpe</description>
+          <operator activated="true" class="operator_toolbox:lda_exampleset" compatibility="2.7.000" expanded="true" height="124" name="Extract Topics from Data (LDA)" width="90" x="514" y="34">
+            <parameter key="text_attribute" value="text"/>
+            <parameter key="number_of_topics" value="5"/>
+            <parameter key="use_alpha_heuristics" value="true"/>
+            <parameter key="alpha_sum" value="0.1"/>
+            <parameter key="use_beta_heuristics" value="true"/>
+            <parameter key="beta" value="0.01"/>
+            <parameter key="optimize_hyperparameters" value="true"/>
+            <parameter key="optimize_interval_for_hyperparameters" value="10"/>
+            <parameter key="top_words_per_topic" value="3"/>
+            <parameter key="iterations" value="1000"/>
+            <parameter key="reproducible" value="false"/>
+            <parameter key="enable_logging" value="false"/>
+            <parameter key="use_local_random_seed" value="false"/>
+            <parameter key="local_random_seed" value="1992"/>
           </operator>
-          <operator activated="true" class="order_attributes" compatibility="9.7.002" expanded="true" height="82" name="Reorder Attributes" width="90" x="313" y="34">
-            <parameter key="sort_mode" value="user specified"/>
-            <parameter key="attribute_ordering" value="concat(reviewCorpe)"/>
-            <parameter key="use_regular_expressions" value="false"/>
-            <parameter key="handle_unmatched" value="append"/>
-            <parameter key="sort_direction" value="ascending"/>
-            <description align="center" color="transparent" colored="false" width="126">Ensure order of columns matches the table view.</description>
+          <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store" width="90" x="514" y="187">
+            <parameter key="repository_entry" value="../Data/Word_list_with_frequency"/>
           </operator>
-          <connect from_port="in 1" to_op="Subprocess" to_port="in 1"/>
-          <connect from_op="Subprocess" from_port="out 1" to_op="Subprocess (2)" to_port="in 1"/>
-          <connect from_op="Subprocess (2)" from_port="out 1" to_op="Reorder Attributes" to_port="example set input"/>
-          <connect from_op="Reorder Attributes" from_port="example set output" to_port="out 1"/>
+          <connect from_port="in 1" to_op="Process Documents from Data" to_port="example set"/>
+          <connect from_op="Process Documents from Data" from_port="example set" to_op="Extract Topics from Data (LDA)" to_port="exa"/>
+          <connect from_op="Process Documents from Data" from_port="word list" to_op="Store" to_port="input"/>
+          <connect from_op="Extract Topics from Data (LDA)" from_port="exa" to_port="out 1"/>
+          <connect from_op="Extract Topics from Data (LDA)" from_port="top" to_port="out 2"/>
+          <connect from_op="Extract Topics from Data (LDA)" from_port="mod" to_port="out 3"/>
           <portSpacing port="source_in 1" spacing="0"/>
           <portSpacing port="source_in 2" spacing="0"/>
           <portSpacing port="sink_out 1" spacing="0"/>
           <portSpacing port="sink_out 2" spacing="0"/>
+          <portSpacing port="sink_out 3" spacing="0"/>
+          <portSpacing port="sink_out 4" spacing="0"/>
         </process>
-        <description align="center" color="transparent" colored="false" width="126">TP Operations: Aggregate</description>
+      </operator>
+      <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store (4)" width="90" x="648" y="34">
+        <parameter key="repository_entry" value="../Data/Final_dataset"/>
+      </operator>
+      <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store (2)" width="90" x="648" y="136">
+        <parameter key="repository_entry" value="../Data/LDA_topics_list"/>
+      </operator>
+      <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store (3)" width="90" x="648" y="238">
+        <parameter key="repository_entry" value="LDA_result"/>
       </operator>
       <connect from_op="Retrieve" from_port="output" to_op="Nominal to Text" to_port="example set input"/>
-      <connect from_op="Nominal to Text" from_port="example set output" to_op="Turbo Prep Process" to_port="in 1"/>
-      <connect from_op="Turbo Prep Process" from_port="out 1" to_port="result 1"/>
+      <connect from_op="Nominal to Text" from_port="example set output" to_op="Text preparation and LDA" to_port="in 1"/>
+      <connect from_op="Text preparation and LDA" from_port="out 1" to_op="Store (4)" to_port="input"/>
+      <connect from_op="Text preparation and LDA" from_port="out 2" to_op="Store (2)" to_port="input"/>
+      <connect from_op="Text preparation and LDA" from_port="out 3" to_op="Store (3)" to_port="input"/>
+      <connect from_op="Store (4)" from_port="through" to_port="result 1"/>
+      <connect from_op="Store (2)" from_port="through" to_port="result 2"/>
+      <connect from_op="Store (3)" from_port="through" to_port="result 3"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+      <portSpacing port="sink_result 4" spacing="0"/>
     </process>
   </operator>
 </process>
