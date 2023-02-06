@@ -12,31 +12,39 @@
     <parameter key="process_duration_for_mail" value="30"/>
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
-      <operator activated="true" class="text:read_document" compatibility="9.4.000" expanded="true" height="68" name="Read Document" width="90" x="45" y="136">
-        <parameter key="file" value="C:/Users/Alghisi/Documents/GitHub/PA_assignement_2/RapidMiner_repo/Raw_data/Video_game_reviews.json"/>
-        <parameter key="extract_text_only" value="true"/>
-        <parameter key="use_file_extension_as_type" value="true"/>
-        <parameter key="content_type" value="txt"/>
-        <parameter key="encoding" value="SYSTEM"/>
+      <operator activated="true" class="subprocess" compatibility="9.7.002" expanded="true" height="82" name="Opening data from JSON" width="90" x="313" y="34">
+        <process expanded="true">
+          <operator activated="true" class="text:read_document" compatibility="9.4.000" expanded="true" height="68" name="Read Document" width="90" x="179" y="34">
+            <parameter key="file" value="C:/Users/Alghisi/Documents/GitHub/PA_assignement_2/RapidMiner_repo/Raw_data/Video_game_reviews.json"/>
+            <parameter key="extract_text_only" value="true"/>
+            <parameter key="use_file_extension_as_type" value="true"/>
+            <parameter key="content_type" value="txt"/>
+            <parameter key="encoding" value="SYSTEM"/>
+          </operator>
+          <operator activated="true" class="operator_toolbox:split_document_into_collection" compatibility="2.7.000" expanded="true" height="82" name="Split Document into Collection" width="90" x="313" y="34">
+            <parameter key="split_string" value="&#10;"/>
+          </operator>
+          <operator activated="true" class="text:json_to_data" compatibility="9.4.000" expanded="true" height="82" name="JSON To Data" width="90" x="447" y="34">
+            <parameter key="ignore_arrays" value="false"/>
+            <parameter key="limit_attributes" value="false"/>
+            <parameter key="skip_invalid_documents" value="false"/>
+            <parameter key="guess_data_types" value="true"/>
+            <parameter key="keep_missing_attributes" value="false"/>
+            <parameter key="missing_values_aliases" value=", null, NaN, missing"/>
+          </operator>
+          <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store" width="90" x="581" y="34">
+            <parameter key="repository_entry" value="../Data/Video_games_reviews"/>
+          </operator>
+          <connect from_op="Read Document" from_port="output" to_op="Split Document into Collection" to_port="document"/>
+          <connect from_op="Split Document into Collection" from_port="collection" to_op="JSON To Data" to_port="documents 1"/>
+          <connect from_op="JSON To Data" from_port="example set" to_op="Store" to_port="input"/>
+          <connect from_op="Store" from_port="through" to_port="out 1"/>
+          <portSpacing port="source_in 1" spacing="0"/>
+          <portSpacing port="sink_out 1" spacing="0"/>
+          <portSpacing port="sink_out 2" spacing="0"/>
+        </process>
       </operator>
-      <operator activated="true" class="operator_toolbox:split_document_into_collection" compatibility="2.7.000" expanded="true" height="82" name="Split Document into Collection" width="90" x="246" y="136">
-        <parameter key="split_string" value="&#10;"/>
-      </operator>
-      <operator activated="true" class="text:json_to_data" compatibility="9.4.000" expanded="true" height="82" name="JSON To Data" width="90" x="447" y="136">
-        <parameter key="ignore_arrays" value="false"/>
-        <parameter key="limit_attributes" value="false"/>
-        <parameter key="skip_invalid_documents" value="false"/>
-        <parameter key="guess_data_types" value="true"/>
-        <parameter key="keep_missing_attributes" value="false"/>
-        <parameter key="missing_values_aliases" value=", null, NaN, missing"/>
-      </operator>
-      <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store" width="90" x="648" y="136">
-        <parameter key="repository_entry" value="../Data/Video_games_reviews"/>
-      </operator>
-      <connect from_op="Read Document" from_port="output" to_op="Split Document into Collection" to_port="document"/>
-      <connect from_op="Split Document into Collection" from_port="collection" to_op="JSON To Data" to_port="documents 1"/>
-      <connect from_op="JSON To Data" from_port="example set" to_op="Store" to_port="input"/>
-      <connect from_op="Store" from_port="through" to_port="result 1"/>
+      <connect from_op="Opening data from JSON" from_port="out 1" to_port="result 1"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
