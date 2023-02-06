@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="9.7.002">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="9.7.002" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="retrieve" compatibility="9.7.002" expanded="true" height="68" name="Retrieve" width="90" x="112" y="34">
+        <parameter key="repository_entry" value="../Data/Temp_videogame_reviews2"/>
+      </operator>
+      <operator activated="true" class="operator_toolbox:lda_exampleset" compatibility="2.7.000" expanded="true" height="124" name="Extract Topics from Data (LDA)" width="90" x="246" y="34">
+        <parameter key="text_attribute" value="text"/>
+        <parameter key="number_of_topics" value="10"/>
+        <parameter key="use_alpha_heuristics" value="true"/>
+        <parameter key="alpha_sum" value="0.1"/>
+        <parameter key="use_beta_heuristics" value="true"/>
+        <parameter key="beta" value="0.01"/>
+        <parameter key="optimize_hyperparameters" value="true"/>
+        <parameter key="optimize_interval_for_hyperparameters" value="10"/>
+        <parameter key="top_words_per_topic" value="5"/>
+        <parameter key="iterations" value="1000"/>
+        <parameter key="reproducible" value="false"/>
+        <parameter key="enable_logging" value="false"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+      </operator>
+      <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store topic list" width="90" x="447" y="136">
+        <parameter key="repository_entry" value="../Data/Topic_list"/>
+      </operator>
+      <operator activated="true" class="set_role" compatibility="9.7.002" expanded="true" height="82" name="Set Role" width="90" x="447" y="34">
+        <parameter key="attribute_name" value="prediction(Topic)"/>
+        <parameter key="target_role" value="regular"/>
+        <list key="set_additional_roles">
+          <parameter key="confidence(Topic_0)" value="regular"/>
+          <parameter key="confidence(Topic_1)" value="regular"/>
+          <parameter key="confidence(Topic_2)" value="regular"/>
+          <parameter key="confidence(Topic_3)" value="regular"/>
+          <parameter key="confidence(Topic_4)" value="regular"/>
+          <parameter key="confidence(Topic_5)" value="regular"/>
+          <parameter key="confidence(Topic_6)" value="regular"/>
+          <parameter key="confidence(Topic_7)" value="regular"/>
+          <parameter key="confidence(Topic_8)" value="regular"/>
+          <parameter key="confidence(Topic_9)" value="regular"/>
+        </list>
+      </operator>
+      <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store (2)" width="90" x="581" y="34">
+        <parameter key="repository_entry" value="../Data/Final_dataset"/>
+      </operator>
+      <connect from_op="Retrieve" from_port="output" to_op="Extract Topics from Data (LDA)" to_port="exa"/>
+      <connect from_op="Extract Topics from Data (LDA)" from_port="exa" to_op="Set Role" to_port="example set input"/>
+      <connect from_op="Extract Topics from Data (LDA)" from_port="top" to_op="Store topic list" to_port="input"/>
+      <connect from_op="Store topic list" from_port="through" to_port="result 2"/>
+      <connect from_op="Set Role" from_port="example set output" to_op="Store (2)" to_port="input"/>
+      <connect from_op="Store (2)" from_port="through" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+    </process>
+  </operator>
+</process>
