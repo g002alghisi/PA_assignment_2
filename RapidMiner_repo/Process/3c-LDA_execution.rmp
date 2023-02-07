@@ -17,14 +17,14 @@
       </operator>
       <operator activated="true" class="operator_toolbox:lda_exampleset" compatibility="2.7.000" expanded="true" height="124" name="Extract Topics from Data (LDA)" width="90" x="246" y="34">
         <parameter key="text_attribute" value="text"/>
-        <parameter key="number_of_topics" value="10"/>
+        <parameter key="number_of_topics" value="100"/>
         <parameter key="use_alpha_heuristics" value="true"/>
         <parameter key="alpha_sum" value="0.1"/>
         <parameter key="use_beta_heuristics" value="true"/>
         <parameter key="beta" value="0.01"/>
         <parameter key="optimize_hyperparameters" value="true"/>
         <parameter key="optimize_interval_for_hyperparameters" value="10"/>
-        <parameter key="top_words_per_topic" value="5"/>
+        <parameter key="top_words_per_topic" value="10"/>
         <parameter key="iterations" value="1000"/>
         <parameter key="reproducible" value="false"/>
         <parameter key="enable_logging" value="false"/>
