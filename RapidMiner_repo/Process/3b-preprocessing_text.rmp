@@ -66,7 +66,7 @@
                 <parameter key="language" value="English"/>
               </operator>
               <operator activated="true" class="text:filter_stopwords_dictionary" compatibility="9.4.000" expanded="true" height="82" name="Filter Stopwords (Dictionary)" width="90" x="648" y="34">
-                <parameter key="case_sensitive" value="true"/>
+                <parameter key="case_sensitive" value="false"/>
                 <parameter key="encoding" value="SYSTEM"/>
               </operator>
               <connect from_port="document" to_op="Tokenize" to_port="document"/>
