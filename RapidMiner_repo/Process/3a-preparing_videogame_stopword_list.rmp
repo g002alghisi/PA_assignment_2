@@ -47,8 +47,10 @@
       <connect from_op="Stem (Snowball)" from_port="document" to_op="Stem (Dictionary)" to_port="document"/>
       <connect from_op="Open File (2)" from_port="file" to_op="Stem (Dictionary)" to_port="file"/>
       <connect from_op="Stem (Dictionary)" from_port="document" to_op="Write Document" to_port="document"/>
+      <connect from_op="Write Document" from_port="document" to_port="result 1"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
     </process>
   </operator>
 </process>

@@ -43,8 +43,8 @@
       </operator>
       <operator activated="true" class="split_data" compatibility="9.7.002" expanded="true" height="82" name="Split Data (2)" width="90" x="447" y="34">
         <enumeration key="partitions">
-          <parameter key="ratio" value="0.001"/>
-          <parameter key="ratio" value="0.999"/>
+          <parameter key="ratio" value="0.01"/>
+          <parameter key="ratio" value="0.99"/>
         </enumeration>
         <parameter key="sampling_type" value="linear sampling"/>
         <parameter key="use_local_random_seed" value="false"/>
@@ -79,6 +79,7 @@
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
+      <description align="center" color="yellow" colored="true" height="56" resized="true" width="384" x="167" y="167">There are 2 different splits because splitting the dataset with a single operation causes the system to run out of memory</description>
     </process>
   </operator>
 </process>

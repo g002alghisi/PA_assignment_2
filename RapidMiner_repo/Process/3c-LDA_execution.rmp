@@ -176,20 +176,20 @@
           <portSpacing port="sink_output 2" spacing="0"/>
         </process>
       </operator>
-      <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store topic list" width="90" x="581" y="187">
-        <parameter key="repository_entry" value="../Data/Topic_list"/>
+      <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store Temp_topic_List" width="90" x="581" y="187">
+        <parameter key="repository_entry" value="../Data/Temp_topic_list"/>
       </operator>
-      <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store Final_dataset" width="90" x="581" y="34">
+      <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store Videogame_final_dataset" width="90" x="581" y="34">
         <parameter key="repository_entry" value="../Data/Videogame_final_dataset"/>
       </operator>
       <connect from_op="Retrieve" from_port="output" to_op="Extract Topics from Data (LDA)" to_port="exa"/>
       <connect from_op="Extract Topics from Data (LDA)" from_port="exa" to_op="Set Role to ignore prediction(Topic)" to_port="example set input"/>
       <connect from_op="Extract Topics from Data (LDA)" from_port="top" to_op="Adjust the topic id number" to_port="in 1"/>
-      <connect from_op="Adjust the topic id number" from_port="out 1" to_op="Store topic list" to_port="input"/>
+      <connect from_op="Adjust the topic id number" from_port="out 1" to_op="Store Temp_topic_List" to_port="input"/>
       <connect from_op="Set Role to ignore prediction(Topic)" from_port="example set output" to_op="Loop to set role to the confidence topic" to_port="input 1"/>
-      <connect from_op="Loop to set role to the confidence topic" from_port="output 1" to_op="Store Final_dataset" to_port="input"/>
-      <connect from_op="Store topic list" from_port="through" to_port="result 2"/>
-      <connect from_op="Store Final_dataset" from_port="through" to_port="result 1"/>
+      <connect from_op="Loop to set role to the confidence topic" from_port="output 1" to_op="Store Videogame_final_dataset" to_port="input"/>
+      <connect from_op="Store Temp_topic_List" from_port="through" to_port="result 2"/>
+      <connect from_op="Store Videogame_final_dataset" from_port="through" to_port="result 1"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
