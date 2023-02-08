@@ -26,46 +26,168 @@
         <parameter key="optimize_interval_for_hyperparameters" value="10"/>
         <parameter key="top_words_per_topic" value="10"/>
         <parameter key="iterations" value="1000"/>
-        <parameter key="reproducible" value="false"/>
+        <parameter key="reproducible" value="true"/>
         <parameter key="enable_logging" value="false"/>
         <parameter key="use_local_random_seed" value="false"/>
         <parameter key="local_random_seed" value="1992"/>
       </operator>
-      <operator activated="true" class="set_role" compatibility="9.7.002" expanded="true" height="82" name="Set Role" width="90" x="313" y="34">
+      <operator activated="true" class="subprocess" compatibility="9.7.002" expanded="true" height="82" name="Adjust the topic id number" width="90" x="447" y="187">
+        <process expanded="true">
+          <operator activated="true" class="subprocess" compatibility="9.7.002" expanded="true" height="82" name="Subprocess" origin="EXPORTED_TURBOPREP" width="90" x="45" y="34">
+            <process expanded="true">
+              <operator activated="true" class="nominal_to_text" compatibility="9.7.002" expanded="true" height="82" name="Nominal to Text" origin="EXPORTED_TURBOPREP" width="90" x="45" y="34">
+                <parameter key="attribute_filter_type" value="value_type"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="nominal"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="file_path"/>
+                <parameter key="block_type" value="single_value"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="single_value"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <description align="center" color="transparent" colored="false" width="126">Change all categorical columns to text</description>
+              </operator>
+              <operator activated="true" class="text_to_nominal" compatibility="9.7.002" expanded="true" height="82" name="Text to Nominal" origin="EXPORTED_TURBOPREP" width="90" x="179" y="34">
+                <parameter key="attribute_filter_type" value="value_type"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="text"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="text"/>
+                <parameter key="block_type" value="value_matrix"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <description align="center" color="transparent" colored="false" width="126">Change all text columns to nominal</description>
+              </operator>
+              <operator activated="true" class="numerical_to_real" compatibility="9.7.002" expanded="true" height="82" name="Numerical to Real" origin="EXPORTED_TURBOPREP" width="90" x="313" y="34">
+                <parameter key="attribute_filter_type" value="value_type"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="numeric"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="real"/>
+                <parameter key="block_type" value="value_series"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_series_end"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <description align="center" color="transparent" colored="false" width="126">Change all numerical columns to real</description>
+              </operator>
+              <connect from_port="in 1" to_op="Nominal to Text" to_port="example set input"/>
+              <connect from_op="Nominal to Text" from_port="example set output" to_op="Text to Nominal" to_port="example set input"/>
+              <connect from_op="Text to Nominal" from_port="example set output" to_op="Numerical to Real" to_port="example set input"/>
+              <connect from_op="Numerical to Real" from_port="example set output" to_port="out 1"/>
+              <portSpacing port="source_in 1" spacing="0"/>
+              <portSpacing port="source_in 2" spacing="0"/>
+              <portSpacing port="sink_out 1" spacing="0"/>
+              <portSpacing port="sink_out 2" spacing="0"/>
+            </process>
+            <description align="center" color="transparent" colored="false" width="126">Unify column types</description>
+          </operator>
+          <operator activated="true" class="generate_attributes" compatibility="9.7.002" expanded="true" height="82" name="Generate Attributes" origin="EXPORTED_TURBOPREP" width="90" x="179" y="34">
+            <list key="function_descriptions">
+              <parameter key="topic_id" value="[topicId]+1"/>
+            </list>
+            <parameter key="keep_all" value="true"/>
+            <description align="center" color="transparent" colored="false" width="126">Generate topic_id = [topicId]+1</description>
+          </operator>
+          <operator activated="true" class="select_attributes" compatibility="9.7.002" expanded="true" height="82" name="Select Attributes" origin="EXPORTED_TURBOPREP" width="90" x="313" y="34">
+            <parameter key="attribute_filter_type" value="regular_expression"/>
+            <parameter key="attribute" value=""/>
+            <parameter key="attributes" value=""/>
+            <parameter key="regular_expression" value="\QtopicId\E"/>
+            <parameter key="use_except_expression" value="false"/>
+            <parameter key="value_type" value="attribute_value"/>
+            <parameter key="use_value_type_exception" value="false"/>
+            <parameter key="except_value_type" value="time"/>
+            <parameter key="block_type" value="attribute_block"/>
+            <parameter key="use_block_type_exception" value="false"/>
+            <parameter key="except_block_type" value="value_matrix_row_start"/>
+            <parameter key="invert_selection" value="true"/>
+            <parameter key="include_special_attributes" value="false"/>
+            <description align="center" color="transparent" colored="false" width="126">Remove topicId</description>
+          </operator>
+          <operator activated="true" class="order_attributes" compatibility="9.7.002" expanded="true" height="82" name="Reorder Attributes" origin="EXPORTED_TURBOPREP" width="90" x="447" y="34">
+            <parameter key="sort_mode" value="user specified"/>
+            <parameter key="attribute_ordering" value="topic_id|word|weight"/>
+            <parameter key="use_regular_expressions" value="false"/>
+            <parameter key="handle_unmatched" value="append"/>
+            <parameter key="sort_direction" value="ascending"/>
+            <description align="center" color="transparent" colored="false" width="126">Ensure order of columns matches the table view.</description>
+          </operator>
+          <connect from_port="in 1" to_op="Subprocess" to_port="in 1"/>
+          <connect from_op="Subprocess" from_port="out 1" to_op="Generate Attributes" to_port="example set input"/>
+          <connect from_op="Generate Attributes" from_port="example set output" to_op="Select Attributes" to_port="example set input"/>
+          <connect from_op="Select Attributes" from_port="example set output" to_op="Reorder Attributes" to_port="example set input"/>
+          <connect from_op="Reorder Attributes" from_port="example set output" to_port="out 1"/>
+          <portSpacing port="source_in 1" spacing="0"/>
+          <portSpacing port="source_in 2" spacing="0"/>
+          <portSpacing port="sink_out 1" spacing="0"/>
+          <portSpacing port="sink_out 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="set_role" compatibility="9.7.002" expanded="true" height="82" name="Set Role to ignore prediction(Topic)" width="90" x="313" y="34">
         <parameter key="attribute_name" value="prediction(Topic)"/>
         <parameter key="target_role" value="ignore_predicted_topic"/>
         <list key="set_additional_roles">
           <parameter key="text" value="ignore_text"/>
         </list>
       </operator>
-      <operator activated="true" class="remove_unused_values" compatibility="9.7.002" expanded="true" height="103" name="Remove Unused Values" width="90" x="447" y="34">
-        <parameter key="return_preprocessing_model" value="false"/>
-        <parameter key="create_view" value="false"/>
-        <parameter key="attribute_filter_type" value="all"/>
+      <operator activated="true" class="concurrency:loop_attributes" compatibility="9.7.002" expanded="true" height="82" name="Loop to set role to the confidence topic" width="90" x="447" y="34">
+        <parameter key="attribute_filter_type" value="subset"/>
         <parameter key="attribute" value=""/>
-        <parameter key="attributes" value=""/>
+        <parameter key="attributes" value="confidence(Topic_0)|confidence(Topic_1)|confidence(Topic_2)|confidence(Topic_3)|confidence(Topic_4)|confidence(Topic_5)|confidence(Topic_6)|confidence(Topic_7)|confidence(Topic_8)|confidence(Topic_9)|confidence(Topic_10)|confidence(Topic_11)|confidence(Topic_12)|confidence(Topic_13)|confidence(Topic_14)|confidence(Topic_15)|confidence(Topic_16)|confidence(Topic_17)|confidence(Topic_18)|confidence(Topic_19)|confidence(Topic_20)|confidence(Topic_21)|confidence(Topic_22)|confidence(Topic_23)|confidence(Topic_24)|confidence(Topic_25)|confidence(Topic_26)|confidence(Topic_27)|confidence(Topic_28)|confidence(Topic_29)|confidence(Topic_30)|confidence(Topic_31)|confidence(Topic_32)|confidence(Topic_33)|confidence(Topic_34)|confidence(Topic_35)|confidence(Topic_36)|confidence(Topic_37)|confidence(Topic_38)|confidence(Topic_39)|confidence(Topic_40)|confidence(Topic_41)|confidence(Topic_42)|confidence(Topic_43)|confidence(Topic_44)|confidence(Topic_45)|confidence(Topic_46)|confidence(Topic_47)|confidence(Topic_48)|confidence(Topic_49)|confidence(Topic_50)|confidence(Topic_51)|confidence(Topic_52)|confidence(Topic_53)|confidence(Topic_54)|confidence(Topic_55)|confidence(Topic_56)|confidence(Topic_57)|confidence(Topic_58)|confidence(Topic_59)|confidence(Topic_60)|confidence(Topic_61)|confidence(Topic_62)|confidence(Topic_63)|confidence(Topic_64)|confidence(Topic_65)|confidence(Topic_66)|confidence(Topic_67)|confidence(Topic_68)|confidence(Topic_69)|confidence(Topic_70)|confidence(Topic_71)|confidence(Topic_72)|confidence(Topic_73)|confidence(Topic_74)|confidence(Topic_75)|confidence(Topic_76)|confidence(Topic_77)|confidence(Topic_78)|confidence(Topic_79)|confidence(Topic_80)|confidence(Topic_81)|confidence(Topic_82)|confidence(Topic_83)|confidence(Topic_84)|confidence(Topic_85)|confidence(Topic_86)|confidence(Topic_87)|confidence(Topic_88)|confidence(Topic_89)|confidence(Topic_90)|confidence(Topic_91)|confidence(Topic_92)|confidence(Topic_93)|confidence(Topic_94)|confidence(Topic_95)|confidence(Topic_96)|confidence(Topic_97)|confidence(Topic_98)|confidence(Topic_99)"/>
         <parameter key="use_except_expression" value="false"/>
-        <parameter key="value_type" value="nominal"/>
+        <parameter key="value_type" value="attribute_value"/>
         <parameter key="use_value_type_exception" value="false"/>
-        <parameter key="except_value_type" value="file_path"/>
-        <parameter key="block_type" value="single_value"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
         <parameter key="use_block_type_exception" value="false"/>
-        <parameter key="except_block_type" value="single_value"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
         <parameter key="invert_selection" value="false"/>
-        <parameter key="include_special_attributes" value="false"/>
-        <parameter key="sort_alphabetically" value="true"/>
+        <parameter key="include_special_attributes" value="true"/>
+        <parameter key="attribute_name_macro" value="loop_attribute"/>
+        <parameter key="reuse_results" value="true"/>
+        <parameter key="enable_parallel_execution" value="true"/>
+        <process expanded="true">
+          <operator activated="true" class="set_role" compatibility="9.7.002" expanded="true" height="82" name="Set Role (2)" width="90" x="179" y="34">
+            <parameter key="attribute_name" value="%{loop_attribute}"/>
+            <parameter key="target_role" value="regular"/>
+            <list key="set_additional_roles"/>
+          </operator>
+          <operator activated="true" class="rename" compatibility="9.7.002" expanded="true" height="82" name="Rename" width="90" x="380" y="34">
+            <parameter key="old_name" value="%{loop_attribute}"/>
+            <parameter key="new_name" value="confidence_topic_%{a}"/>
+            <list key="rename_additional_attributes"/>
+          </operator>
+          <connect from_port="input 1" to_op="Set Role (2)" to_port="example set input"/>
+          <connect from_op="Set Role (2)" from_port="example set output" to_op="Rename" to_port="example set input"/>
+          <connect from_op="Rename" from_port="example set output" to_port="output 1"/>
+          <portSpacing port="source_input 1" spacing="0"/>
+          <portSpacing port="source_input 2" spacing="0"/>
+          <portSpacing port="sink_output 1" spacing="0"/>
+          <portSpacing port="sink_output 2" spacing="0"/>
+        </process>
       </operator>
-      <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store topic list" width="90" x="447" y="187">
+      <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store topic list" width="90" x="581" y="187">
         <parameter key="repository_entry" value="../Data/Topic_list"/>
       </operator>
       <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store Final_dataset" width="90" x="581" y="34">
-        <parameter key="repository_entry" value="../Data/Temp_videogame_reviews3"/>
+        <parameter key="repository_entry" value="../Data/Videogame_final_dataset"/>
       </operator>
       <connect from_op="Retrieve" from_port="output" to_op="Extract Topics from Data (LDA)" to_port="exa"/>
-      <connect from_op="Extract Topics from Data (LDA)" from_port="exa" to_op="Set Role" to_port="example set input"/>
-      <connect from_op="Extract Topics from Data (LDA)" from_port="top" to_op="Store topic list" to_port="input"/>
-      <connect from_op="Set Role" from_port="example set output" to_op="Remove Unused Values" to_port="example set input"/>
-      <connect from_op="Remove Unused Values" from_port="example set output" to_op="Store Final_dataset" to_port="input"/>
+      <connect from_op="Extract Topics from Data (LDA)" from_port="exa" to_op="Set Role to ignore prediction(Topic)" to_port="example set input"/>
+      <connect from_op="Extract Topics from Data (LDA)" from_port="top" to_op="Adjust the topic id number" to_port="in 1"/>
+      <connect from_op="Adjust the topic id number" from_port="out 1" to_op="Store topic list" to_port="input"/>
+      <connect from_op="Set Role to ignore prediction(Topic)" from_port="example set output" to_op="Loop to set role to the confidence topic" to_port="input 1"/>
+      <connect from_op="Loop to set role to the confidence topic" from_port="output 1" to_op="Store Final_dataset" to_port="input"/>
       <connect from_op="Store topic list" from_port="through" to_port="result 2"/>
       <connect from_op="Store Final_dataset" from_port="through" to_port="result 1"/>
       <portSpacing port="source_input 1" spacing="0"/>

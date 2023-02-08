@@ -12,10 +12,11 @@
     <parameter key="process_duration_for_mail" value="30"/>
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
+      <operator activated="true" class="retrieve" compatibility="9.7.002" expanded="true" height="68" name="Retrieve" width="90" x="112" y="34">
+        <parameter key="repository_entry" value="../Data/Temp_videogame_reviews3"/>
+      </operator>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
-      <portSpacing port="sink_result 2" spacing="0"/>
-      <portSpacing port="sink_result 3" spacing="0"/>
     </process>
   </operator>
 </process>
