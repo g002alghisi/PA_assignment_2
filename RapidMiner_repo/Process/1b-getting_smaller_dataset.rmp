@@ -13,7 +13,7 @@
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
       <operator activated="true" class="retrieve" compatibility="9.7.002" expanded="true" height="68" name="Retrieve" width="90" x="45" y="34">
-        <parameter key="repository_entry" value="//PA_assignment_2/Data/Video_games_reviews"/>
+        <parameter key="repository_entry" value="../Data/Videogames_reviews"/>
       </operator>
       <operator activated="true" class="split_data" compatibility="9.7.002" expanded="true" height="82" name="Split Data" width="90" x="179" y="34">
         <enumeration key="partitions">
@@ -68,7 +68,7 @@
         <parameter key="sort_alphabetically" value="true"/>
       </operator>
       <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store" width="90" x="715" y="34">
-        <parameter key="repository_entry" value="../Data/Video_game_reviews_small"/>
+        <parameter key="repository_entry" value="../Data/Videogame_reviews_small"/>
       </operator>
       <connect from_op="Retrieve" from_port="output" to_op="Split Data" to_port="example set"/>
       <connect from_op="Split Data" from_port="partition 1" to_op="Remove Unused Values" to_port="example set input"/>

@@ -13,7 +13,7 @@
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
       <operator activated="true" class="text:read_document" compatibility="9.4.000" expanded="true" height="68" name="Read Document" width="90" x="179" y="34">
-        <parameter key="file" value="C:/Users/Alghisi/Documents/GitHub/PA_assignement_2/RapidMiner_repo/Raw_data/Video_game_reviews.json"/>
+        <parameter key="file" value="C:/Users/Alghisi/Documents/GitHub/PA_assignement_2/RapidMiner_repo/Raw_data/Videogame_reviews.json"/>
         <parameter key="extract_text_only" value="true"/>
         <parameter key="use_file_extension_as_type" value="true"/>
         <parameter key="content_type" value="txt"/>
@@ -31,7 +31,7 @@
         <parameter key="missing_values_aliases" value=", null, NaN, missing"/>
       </operator>
       <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store" width="90" x="581" y="34">
-        <parameter key="repository_entry" value="../Data/Video_games_reviews"/>
+        <parameter key="repository_entry" value="../Data/Videogames_reviews"/>
       </operator>
       <connect from_op="Read Document" from_port="output" to_op="Split Document into Collection" to_port="document"/>
       <connect from_op="Split Document into Collection" from_port="collection" to_op="JSON To Data" to_port="documents 1"/>

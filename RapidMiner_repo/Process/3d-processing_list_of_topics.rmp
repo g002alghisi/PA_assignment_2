@@ -93,13 +93,7 @@
         </process>
         <description align="center" color="transparent" colored="false" width="126">Aggregate word grouped by topicId</description>
       </operator>
-      <operator activated="true" class="rename" compatibility="9.7.002" expanded="true" height="82" name="Rename" origin="GENERATED_TURBOPREP" width="90" x="447" y="34">
-        <parameter key="old_name" value="concat(word)"/>
-        <parameter key="new_name" value="topic_word"/>
-        <list key="rename_additional_attributes"/>
-        <description align="center" color="transparent" colored="false" width="126">concat(word) -&gt; topic_word</description>
-      </operator>
-      <operator activated="true" class="split" compatibility="9.7.002" expanded="true" height="82" name="Split" origin="GENERATED_TURBOPREP" width="90" x="581" y="34">
+      <operator activated="true" class="split" compatibility="9.7.002" expanded="true" height="82" name="Split" origin="GENERATED_TURBOPREP" width="90" x="447" y="34">
         <parameter key="attribute_filter_type" value="regular_expression"/>
         <parameter key="attribute" value=""/>
         <parameter key="attributes" value=""/>
@@ -354,7 +348,7 @@
         </process>
         <description align="center" color="transparent" colored="false" width="126">TP Operations: Filter, Split, Rename, Rename</description>
       </operator>
-      <operator activated="true" class="concurrency:join" compatibility="9.7.002" expanded="true" height="82" name="Join" width="90" x="715" y="34">
+      <operator activated="true" class="concurrency:join" compatibility="9.7.002" expanded="true" height="82" name="Join" width="90" x="581" y="34">
         <parameter key="remove_double_attributes" value="true"/>
         <parameter key="join_type" value="outer"/>
         <parameter key="use_id_attribute_as_key" value="false"/>
@@ -365,8 +359,7 @@
       </operator>
       <connect from_op="Retrieve" from_port="output" to_op="Subprocess" to_port="in 1"/>
       <connect from_op="Subprocess" from_port="out 1" to_op="Subprocess (2)" to_port="in 1"/>
-      <connect from_op="Subprocess (2)" from_port="out 1" to_op="Rename" to_port="example set input"/>
-      <connect from_op="Rename" from_port="example set output" to_op="Split" to_port="example set input"/>
+      <connect from_op="Subprocess (2)" from_port="out 1" to_op="Split" to_port="example set input"/>
       <connect from_op="Split" from_port="example set output" to_op="Join" to_port="left"/>
       <connect from_op="Open File" from_port="file" to_op="Read Document" to_port="file"/>
       <connect from_op="Read Document" from_port="output" to_op="Split Document into Collection" to_port="document"/>

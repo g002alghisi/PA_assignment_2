@@ -12,27 +12,6 @@
     <parameter key="process_duration_for_mail" value="30"/>
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
-      <operator activated="true" class="productivity:execute_process" compatibility="9.7.002" expanded="true" height="82" name="Execute 3b-preprocessing_text" width="90" x="112" y="136">
-        <parameter key="process_location" value="3b-preprocessing_text"/>
-        <parameter key="use_input" value="true"/>
-        <parameter key="store_output" value="false"/>
-        <parameter key="propagate_metadata_recursively" value="true"/>
-        <parameter key="cache_process" value="true"/>
-        <list key="macros"/>
-        <parameter key="fail_for_unknown_macros" value="true"/>
-      </operator>
-      <operator activated="true" class="productivity:execute_process" compatibility="9.7.002" expanded="true" height="82" name="Execute 3c-LDA_execution" width="90" x="313" y="136">
-        <parameter key="process_location" value="3c-LDA_execution"/>
-        <parameter key="use_input" value="true"/>
-        <parameter key="store_output" value="false"/>
-        <parameter key="propagate_metadata_recursively" value="true"/>
-        <parameter key="cache_process" value="true"/>
-        <list key="macros"/>
-        <parameter key="fail_for_unknown_macros" value="true"/>
-      </operator>
-      <connect from_op="Execute 3b-preprocessing_text" from_port="result 1" to_op="Execute 3c-LDA_execution" to_port="input 1"/>
-      <connect from_op="Execute 3c-LDA_execution" from_port="result 1" to_port="result 1"/>
-      <connect from_op="Execute 3c-LDA_execution" from_port="result 2" to_port="result 2"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
