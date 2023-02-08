@@ -45,7 +45,7 @@
             <parameter key="enable_parallel_execution" value="true"/>
           </operator>
           <operator activated="true" class="store" compatibility="9.7.002" expanded="true" height="68" name="Store" width="90" x="313" y="136">
-            <parameter key="repository_entry" value="Final_model_attribute_weights"/>
+            <parameter key="repository_entry" value="../Data/Final_model_attribute_weights"/>
           </operator>
           <connect from_port="training" to_op="Random Forest" to_port="training set"/>
           <connect from_op="Random Forest" from_port="model" to_port="model"/>

@@ -44,7 +44,7 @@
       <operator activated="true" class="split_data" compatibility="9.7.002" expanded="true" height="82" name="Split Data (2)" width="90" x="447" y="34">
         <enumeration key="partitions">
           <parameter key="ratio" value="0.001"/>
-          <parameter key="ratio" value="0.991"/>
+          <parameter key="ratio" value="0.999"/>
         </enumeration>
         <parameter key="sampling_type" value="linear sampling"/>
         <parameter key="use_local_random_seed" value="false"/>

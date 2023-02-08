@@ -1,114 +1,109 @@
-00: Battle game
-01: The Elder Scrolls series
-02: Final fantasy series
-03: Spider man game
-04: Wrestling game
-05: Good review - general comments (1)
-06: Metal gear solid series
-07: Review related to controllers
-08: Tactical war game
-09: Harry Potter - the Lego game
+01: Battle game
+02: The Elder Scrolls series
+03: Final fantasy series
+04: Spider man game
+05: Wrestling game
+06: Good review - general comments (1)
+07: Metal gear solid series
+08: Review related to controllers
+09: Tactical war game
+10: Harry Potter - the Lego game
 
-10: Good review - general comments (2)
-11: Multiplayer game
-12: Videogame for the entire family
-13: Quiz game
-14: Arcade fighting game (Tekken, Street fighter...)
-15: (???)
-16: Bad review - lags and problems
-17: (???)
-18: Golf game
-19: Pokémon series
+11: Good review - general comments (2)
+12: Multiplayer game
+13: Videogame for the entire family
+14: Quiz game
+15: Arcade fighting game (Tekken, Street fighter...)
+16: (???)
+17: Bad review - lags and problems
+18: (???)
+19: Golf game
+20: Pokémon series
 
-20: Spanish review - chess game
-21: Skateboard game
-22: Bad review - poor graphical quality
-23: Assassin's creed series
-24: War game - Unity series
-25: Good review - general comments (3)
-26: Good review - Game suggested
-27: GTA game
-28: Game controller review
-29: (???)
+21: Spanish review - chess game
+22: Skateboard game
+23: Bad review - poor graphical quality
+24: Assassin's creed series
+25: War game - Unity series
+26: Good review - general comments (3)
+27: Good review - Game suggested
+28: GTA game
+29: Game controller review
+30: (???)
 
-30: Post apocalyptic adventure
-31: Good review - value for money
-32: Animal and farming game
-33: Puzzle game
-34: Good review - well developed videogame
-35: Good review - general comments (4)
-36: Good review - good graphics
-37: Game controller review
-38: Badreview - general comments (1)
-39: Good review - good graphics and fluidity
+31: Post apocalyptic adventure
+32: Good review - value for money
+33: Animal and farming game
+34: Puzzle game
+35: Good review - well developed videogame
+36: Good review - general comments (4)
+37: Good review - good graphics
+38: Game controller review
+39: Badreview - general comments (1)
+40: Good review - good graphics and fluidity
 
-40: (???)
 41: (???)
-42: DRM game
-43: Steam game
-44: Sonic series
-45: (???)
-46: Snowboard game
-47: Good review - general comments (5)
-48: RPG game (1)
-49: Science fiction game (space topic)
+42: (???)
+43: DRM game
+44: Steam game
+45: Sonic series
+46: (???)
+47: Snowboard game
+48: Good review - general comments (5)
+49: RPG game (1)
+50: Science fiction game (space topic)
 
-50: Flight simulator
-51: Cards and casino game
-52: Bed review - general comments (2)
-53: Dance game
-54: (???)
-55: Discussion about the time
-56: Bad review - general comments (3)
-57: Amazon product
-58: Action adventure videogame
-59: (???)
+51: Flight simulator
+52: Cards and casino game
+53: Bed review - general comments (2)
+54: Dance game
+55: (???)
+56: Discussion about the time
+57: Bad review - general comments (3)
+58: Amazon product
+59: Action adventure videogame
+60: (???)
 
-60: Motion-controlled games (Wii, ...)
-61: Classic game
-62: (???)
-63: (American) football game
-64: (???)
-65: Good review - general comments (6)
-66: RPG Game (2)
-67: Fitness game (Wii balance board, ...)
-68: (???)
-69: Computer requirements advise
+61: Motion-controlled games (Wii, ...)
+62: Classic game
+63: (???)
+64: (American) football game
+65: (???)
+66: Good review - general comments (6)
+67: RPG Game (2)
+68: Fitness game (Wii balance board, ...)
+69: (???)
+70: Computer requirements advise
 
-70: Bioshock series
-71: (???)
-72: Guitar hero and music games
-73: Consol oriented review (they speak about the different consoles)
-74: (???)
-75: Cover discussion (protection for the controller, ...)
-76: Dark souls series
-77: Portable consol discussion
-78: (???)
-79: Exploration game
+71: Bioshock series
+72: (???)
+73: Guitar hero and music games
+74: Consol oriented review (they speak about the different consoles)
+75: (???)
+76: Cover discussion (protection for the controller, ...)
+77: Dark souls series
+78: Portable consol discussion
+79: (???)
+80: Exploration game
 
-80: Car racing game
-81: Headset discussion
-82: Soccer and basketball game
-83: Halo series
-84: Spy game
-85: Diablo series
-86: About colours
-87: (???)
-88: Good review - general comments (7)
-89: The Sims series
+81: Car racing game
+82: Headset discussion
+83: Soccer and basketball game
+84: Halo series
+85: Spy game
+86: Diablo series
+87: About colours
+88: (???)
+89: Good review - general comments (7)
+90: The Sims series
 
-90: Extensions discussion (dlc, ...)
-91: Bad review - general comments
-92: Star wars series
-93: Shooter game
-94: Tomb rider series
-95: Baseball game
-96: Good review - good support
-97: The legend of Zelda series
-98: Super mario series
-99: Christmas present
-
-
-
-
-
+91: Extensions discussion (dlc, ...)
+92: Bad review - general comments
+93: Star wars series
+94: Shooter game
+95: Tomb rider series
+96: Baseball game
+97: Good review - good support
+98: The legend of Zelda series
+99: Super mario series
+100: Christmas present

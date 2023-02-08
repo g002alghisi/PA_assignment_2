@@ -76,7 +76,7 @@
       <operator activated="true" class="subprocess" compatibility="9.7.002" expanded="true" height="82" name="Subprocess (2)" origin="GENERATED_TURBOPREP" width="90" x="313" y="34">
         <process expanded="true">
           <operator activated="true" class="blending:pivot" compatibility="9.7.002" expanded="true" height="82" name="Pivot" origin="GENERATED_TURBOPREP" width="90" x="45" y="34">
-            <parameter key="group_by_attributes" value="topicId"/>
+            <parameter key="group_by_attributes" value="topic_id"/>
             <parameter key="column_grouping_attribute" value=""/>
             <list key="aggregation_attributes">
               <parameter key="word" value="concatenation"/>
@@ -353,7 +353,7 @@
         <parameter key="join_type" value="outer"/>
         <parameter key="use_id_attribute_as_key" value="false"/>
         <list key="key_attributes">
-          <parameter key="topicId" value="topic_id"/>
+          <parameter key="topic_id" value="topic_id"/>
         </list>
         <parameter key="keep_both_join_attributes" value="false"/>
       </operator>
