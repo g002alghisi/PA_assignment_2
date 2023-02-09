@@ -29,7 +29,7 @@
         <parameter key="condition_class" value="custom_filters"/>
         <parameter key="invert_filter" value="false"/>
         <list key="filters_list">
-          <parameter key="filters_entry_key" value="number_helpfulness_ratings.gt.2"/>
+          <parameter key="filters_entry_key" value="number_helpfulness_ratings.ge.2"/>
         </list>
         <parameter key="filters_logic_and" value="true"/>
         <parameter key="filters_check_metadata" value="false"/>
