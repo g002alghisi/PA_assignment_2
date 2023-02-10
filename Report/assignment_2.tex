@@ -50,8 +50,43 @@
 	
 	\tableofcontents
 	
-	\section{Introduction}
-		\dots
+	\section{Some words for the software developed}
+		In this section the structure of the software developed in the \textsc{RapidMiner} environment will be described.\footnote{The software is available at~\cite{repo:pa-assignment-2}.} In particular, describing the software components it will be possible to depict the reasoning above which the entire analysis lies, pinpointing the differences between this replica and the original study in terms of \emph{data preparation} and \emph{modelling}. For convenience, a subsection will be reserved to each prepared process, but please refer to the comments spread throughout the code itself for further information.
+		
+		\subsection{Opening data}
+		 	The first process to be run is \verb|1a-opening_data|, that converts the provided \verb|.json| dataset into an \verb|ExampleSet|;\footnote{For this analysis it has been used the dataset available on Canvas.} this is the starting point of the entire analysis in \textsc{RapidMiner}.
+		 
+		 \subsection{Filtering and preparing the data}
+		 	The purpose of this task is to clean the dataset, filtering it, and to prepare the data to the text preprocessing phase.
+		 	
+		 	As discussed in \cite{article:muller}, to increase the reliability of the analysis all the reviews with less than two helpfulness ratings have to be removed. Moreover, the process generates the following new features:
+		 	\begin{itemize}
+		 		\item \verb*|helpfulness| the target feature obtained evaluating the ratio of the number of positive helpfulness ratings over the number of helpfulness feedbacks (per each review); if this ratio is over 0.5, then the feature assumes \verb*|true| value, otherwise \verb*|false|.
+		 		\item \verb*|text_corpe|, obtained by the concatenation of review summary and the text itself. it is important to highlight that \citeauthor{article:muller} are a little bit vague, because they talk about "the corpus" of the reviews; for this replica it has been decided to consider both the summary and the actual text of each review.
+		 		\item \verb*|text_corpe_length|, calculated by counting the number of words in the \verb*|text_corpe| feature. 
+		 	\end{itemize} 
+	 	
+	 	\subsection{Preprocessing the text}
+	 		This phase is crucial to sensibly apply the \emph{LDA} algorithm, as it consists of filter the noise as much as possible from the text to be processed. This has been done with the following sequence of operations:
+	 		\begin{enumerate}
+	 			\item \emph{converting all characters to lower-case};
+	 			\item \emph{tokenizing} each \verb*|text_corpe| occurrence into single words;
+	 			\item \emph{removing stop words}, that is deleting uninformative but frequent words. Actually, the stop words can be classified in two different families:
+	 			\begin{itemize}
+	 				\item \emph{standard stop words}, and for this particular study the only English stop words have been considered, like ``the'', ``and'' or ``I''; this is done by 
+	 				\item \emph{custom stop words}, related to the main topic of our analysis (i.e. video games reviews), like ``game'' or ``play''.
+	 			\end{itemize}
+ 				\item \emph{stemming}, an operation that consists of reducing a word to its stem, like the words ``analyze'' and ``analysis'' to ``analy''; in particular, the \emph{Snowball algorithm} has been used.\footnote{Not knowing in deep the differences that different stemming algorithms present, for this work it has been chosen the most suggested by the \textsc{RapidMiner} community.}
+	 		\end{enumerate}
+ 			At this point a clarification is required: the original study performed by \citeauthor{article:muller} relies on the exploitation of the \emph{Lemmatizing} algorithm. This means that words like ``dog'', ``Dog'', ``dogs'', and ``Dogs'' would all change to ``dog'' (word are transformed into its dictionary form). The lemmatizing approach is, without any doubt, more gentle, but, due to the fact that \textsc{RapidMiner} does not provide this algorithm, stemming approach has been exploited instead, as suggested by the community itself.
+	 		
+ 		\subsection{Preparing video games stop word list}
+		 	In the last subsection it has been said that the stop words a list of custom stop words should be perpared in order to properly filter them from the text. However, this list has to be prepared, and this is done with the help of this process.\\
+		 	The game-related stop word list is used to filtered the text, but a problem could arise. Indeed, the Stem algorithm is applied to the original \verb*|review_corpe| text. This causes the words to be truncated (e.g. ``games'' could become ``game''). Thus, the stop word list include just the the word "games" in our dictionary of game-related stop words list, it will be useless to filter the \verb*|review_corpe| text considering it, because the Stem algorithm prevents it to appear in the output (it will appear "game", but this word differs from "games"). In order to improve the robustness of our analysis, the game-related stop words list has been developed applying the same Stem algorithm to the words specified by the user through the .txt file.
+		 	
+		 	
+
+		 	
 	
 	\section{First section}
 		\dots
