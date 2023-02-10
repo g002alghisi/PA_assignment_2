@@ -15,19 +15,19 @@
       <operator activated="true" class="retrieve" compatibility="9.7.002" expanded="true" height="68" name="Retrieve" width="90" x="45" y="34">
         <parameter key="repository_entry" value="../Data/Videogame_final_dataset"/>
       </operator>
-      <operator activated="true" class="split_validation" compatibility="9.7.002" expanded="true" height="124" name="Validation" width="90" x="246" y="34">
+      <operator activated="true" class="split_validation" compatibility="9.7.002" expanded="true" height="124" name="Validation" width="90" x="313" y="34">
         <parameter key="create_complete_model" value="false"/>
         <parameter key="split" value="relative"/>
         <parameter key="split_ratio" value="0.8"/>
         <parameter key="training_set_size" value="100"/>
         <parameter key="test_set_size" value="-1"/>
-        <parameter key="sampling_type" value="automatic"/>
+        <parameter key="sampling_type" value="shuffled sampling"/>
         <parameter key="use_local_random_seed" value="false"/>
         <parameter key="local_random_seed" value="1992"/>
         <process expanded="true">
           <operator activated="true" class="concurrency:parallel_random_forest" compatibility="9.7.002" expanded="true" height="103" name="Random Forest" width="90" x="179" y="34">
             <parameter key="number_of_trees" value="128"/>
-            <parameter key="criterion" value="gini_index"/>
+            <parameter key="criterion" value="information_gain"/>
             <parameter key="maximal_depth" value="10"/>
             <parameter key="apply_pruning" value="false"/>
             <parameter key="confidence" value="0.1"/>
@@ -80,6 +80,9 @@
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
       <portSpacing port="sink_result 3" spacing="0"/>
+      <description align="center" color="yellow" colored="false" height="69" resized="true" width="347" x="192" y="202">As the title suggests, this task consist of building and validating our model, thus measuring the performances achieved.</description>
+      <description align="left" color="gray" colored="true" height="124" resized="true" width="585" x="68" y="274">As a model, it has been used a random forest one, consisting of 128 trees trained on bootstrapped sub-sets of the ExampleSet.&lt;br&gt;Each random tree generates a prediction for each Example by following the branches of the tree in accordance to the splitting rules and evaluating the leaf. Class predictions are based on the majority of Examples, while estimations are obtained through the average of values reaching a leaf. The resulting model is a voting model of all created random trees.</description>
+      <description align="left" color="gray" colored="true" height="147" resized="true" width="681" x="33" y="402">The entire dataet has been splitted in 2 parts:&lt;br&gt;* training data, 80%;&lt;br&gt;* testing data, 20%.&lt;br&gt;The sampling type selected is shuffled sampling (i.e. random sampling). This choise has been taken because linear sampling (i.e. top sampling) runs a serious risk of introducing bias, as the sample will be affected by any ordering of the original dataset. Instead, stratified sampling ensuring that the sample has exactly the same distribution of the different levels of the target feature as the original dataset, but this is not required in this case.</description>
     </process>
   </operator>
 </process>

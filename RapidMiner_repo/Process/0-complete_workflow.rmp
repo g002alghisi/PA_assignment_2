@@ -21,7 +21,7 @@
         <list key="macros"/>
         <parameter key="fail_for_unknown_macros" value="true"/>
       </operator>
-      <operator activated="true" class="productivity:execute_process" compatibility="9.7.002" expanded="true" height="68" name="Execute 2-filtering_and_preparing_data" width="90" x="179" y="85">
+      <operator activated="true" class="productivity:execute_process" compatibility="9.7.002" expanded="true" height="82" name="Execute 2-filtering_and_preparing_data" width="90" x="179" y="85">
         <parameter key="process_location" value="2-filtering_and_preparing_data"/>
         <parameter key="use_input" value="true"/>
         <parameter key="store_output" value="false"/>
@@ -30,7 +30,7 @@
         <list key="macros"/>
         <parameter key="fail_for_unknown_macros" value="true"/>
       </operator>
-      <operator activated="true" class="productivity:execute_process" compatibility="9.7.002" expanded="true" height="68" name="Execute 3a-preparing_videogame_stopword_list" width="90" x="313" y="85">
+      <operator activated="true" class="productivity:execute_process" compatibility="9.7.002" expanded="true" height="82" name="Execute 3a-preparing_videogame_stopword_list" width="90" x="313" y="85">
         <parameter key="process_location" value="3a-preparing_videogame_stopword_list"/>
         <parameter key="use_input" value="true"/>
         <parameter key="store_output" value="false"/>
@@ -48,7 +48,7 @@
         <list key="macros"/>
         <parameter key="fail_for_unknown_macros" value="true"/>
       </operator>
-      <operator activated="true" class="productivity:execute_process" compatibility="9.7.002" expanded="true" height="82" name="Execute 3c-LDA_execution" width="90" x="581" y="85">
+      <operator activated="true" class="productivity:execute_process" compatibility="9.7.002" expanded="true" height="82" name="Execute 3c-LDA_execution" width="90" x="179" y="238">
         <parameter key="process_location" value="3c-LDA_execution"/>
         <parameter key="use_input" value="true"/>
         <parameter key="store_output" value="false"/>
@@ -57,7 +57,7 @@
         <list key="macros"/>
         <parameter key="fail_for_unknown_macros" value="true"/>
       </operator>
-      <operator activated="true" class="productivity:execute_process" compatibility="9.7.002" expanded="true" height="68" name="Execute 3d-processing_list_of_topics" width="90" x="112" y="238">
+      <operator activated="true" class="productivity:execute_process" compatibility="9.7.002" expanded="true" height="82" name="Execute 3d-processing_list_of_topics" width="90" x="313" y="238">
         <parameter key="process_location" value="3d-processing_list_of_topics"/>
         <parameter key="use_input" value="true"/>
         <parameter key="store_output" value="false"/>
@@ -66,7 +66,7 @@
         <list key="macros"/>
         <parameter key="fail_for_unknown_macros" value="true"/>
       </operator>
-      <operator activated="true" class="productivity:execute_process" compatibility="9.7.002" expanded="true" height="82" name="Execute 4-building_random_forest" width="90" x="246" y="238">
+      <operator activated="true" class="productivity:execute_process" compatibility="9.7.002" expanded="true" height="82" name="Execute 4-building_random_forest" width="90" x="447" y="238">
         <parameter key="process_location" value="4-building_random_forest"/>
         <parameter key="use_input" value="true"/>
         <parameter key="store_output" value="false"/>

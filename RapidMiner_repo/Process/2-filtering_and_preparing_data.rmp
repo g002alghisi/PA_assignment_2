@@ -29,7 +29,7 @@
         <parameter key="condition_class" value="custom_filters"/>
         <parameter key="invert_filter" value="false"/>
         <list key="filters_list">
-          <parameter key="filters_entry_key" value="number_helpfulness_ratings.gt.2"/>
+          <parameter key="filters_entry_key" value="number_helpfulness_ratings.ge.2"/>
         </list>
         <parameter key="filters_logic_and" value="true"/>
         <parameter key="filters_check_metadata" value="false"/>
@@ -100,6 +100,11 @@
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
+      <description align="center" color="yellow" colored="false" height="53" resized="true" width="675" x="102" y="326">Te pourpose of this task is to clean the dataset, filtering it, and to prepare the data to the next stages, in particular to the preprocessing of the text.</description>
+      <description align="left" color="gray" colored="true" height="105" resized="true" width="576" x="153" y="390">First of all, some new attributes has been created:&lt;br&gt;* helpfulness, calculated as the ratio helpful[1]/(helpful[1]+helpful[0]);&lt;br&gt;* text_corpe, obtained concatenanting the summary of the review and the reviewText;&lt;br&gt;* length_text_corpe, obtained as the number ow words present in the new attribute text_corpe;&lt;br&gt;* number_of_helpfulness_ratings, calculated as the sum (helpful[1]+helpful[0]).&lt;br&gt;&lt;br&gt;</description>
+      <description align="center" color="gray" colored="true" height="50" resized="true" width="543" x="169" y="506">Then the examples with less than 2 helpfulness ratings has been filtered</description>
+      <description align="left" color="gray" colored="true" height="99" resized="true" width="519" x="187" y="569">After that, the only attributes of interest has been selected, thus:&lt;br&gt;* helpfulness;&lt;br&gt;* overall;&lt;br&gt;* review_corpe;&lt;br&gt;* review_corpe_length.</description>
+      <description align="center" color="gray" colored="true" height="50" resized="true" width="332" x="276" y="675">Finally, the helpfulness attribute has been labelled as &amp;quot;label&amp;quot; (target feature).</description>
     </process>
   </operator>
 </process>

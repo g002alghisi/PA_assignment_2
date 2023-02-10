@@ -40,6 +40,7 @@
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="514" x="110" y="157">The aim of this process is just to open (read) the &amp;quot;raw&amp;quot; document, with extension .json, and convert it into an ExampleSet.</description>
     </process>
   </operator>
 </process>

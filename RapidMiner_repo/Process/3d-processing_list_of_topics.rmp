@@ -459,6 +459,7 @@
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
+      <description align="center" color="yellow" colored="false" height="70" resized="true" width="382" x="340" y="428">The pourpose of this process is to adjust the topic list and assign, by means of a .txt file written by the user, a title to each topic</description>
     </process>
   </operator>
 </process>

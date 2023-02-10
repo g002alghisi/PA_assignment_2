@@ -194,6 +194,8 @@
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
       <portSpacing port="sink_result 3" spacing="0"/>
+      <description align="center" color="yellow" colored="false" height="66" resized="true" width="411" x="209" y="302">The pourpose of this process, as the title suggests, is to execute the LDA analysis to the review_corpe of the examples of our dataset.</description>
+      <description align="left" color="gray" colored="true" height="170" resized="true" width="658" x="63" y="378">The analysis attempts to exctract 100 topics from the text, considering 10 words per topic, and to label each review_corpe attribute with a topic (in terms of likelihood).&lt;br&gt;There are two outputs from the LDA block:&lt;br&gt;* the dataset with new columns (100) oeach one consisting of the likelihood of each example to belong to the related topic;&lt;br&gt;* the topic list found by the LDA algorithem, each one presented with the 10 related words; this table have to bee adjusted in some way by the next process 3d-processing_list_of_topics.&lt;br&gt;&lt;br&gt;These two tables have to be slightly adjusted in terms or roles and offset of some indexes.&lt;br&gt;</description>
     </process>
   </operator>
 </process>

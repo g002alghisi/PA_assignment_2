@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="9.7.002">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="9.7.002" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="retrieve" compatibility="9.7.002" expanded="true" height="68" name="Retrieve Final_model_attribute_weights" width="90" x="112" y="34">
+        <parameter key="repository_entry" value="../Data/Final_model_attribute_weights"/>
+      </operator>
+      <operator activated="true" class="weights_to_data" compatibility="9.7.002" expanded="true" height="68" name="Weights to Data" width="90" x="246" y="34"/>
+      <operator activated="true" class="retrieve" compatibility="9.7.002" expanded="true" height="68" name="Retrieve Topic_list" width="90" x="246" y="187">
+        <parameter key="repository_entry" value="../Data/Topic_list"/>
+      </operator>
+      <operator activated="true" class="write_excel" compatibility="9.7.002" expanded="true" height="103" name="Write Excel (2)" width="90" x="380" y="187">
+        <parameter key="excel_file" value="C:/Users/Alghisi/Documents/GitHub/PA_assignement_2/RapidMiner_repo/Results/topic_list.xlsx"/>
+        <parameter key="file_format" value="xlsx"/>
+        <enumeration key="sheet_names"/>
+        <parameter key="sheet_name" value="RapidMiner Data"/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="number_format" value="#.0"/>
+        <parameter key="encoding" value="SYSTEM"/>
+      </operator>
+      <operator activated="true" class="write_excel" compatibility="9.7.002" expanded="true" height="103" name="Write Excel" width="90" x="380" y="34">
+        <parameter key="excel_file" value="C:/Users/Alghisi/Documents/GitHub/PA_assignement_2/RapidMiner_repo/Results/attribute_weigths.xlsx"/>
+        <parameter key="file_format" value="xlsx"/>
+        <enumeration key="sheet_names"/>
+        <parameter key="sheet_name" value="RapidMiner Data"/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="number_format" value="#.0"/>
+        <parameter key="encoding" value="SYSTEM"/>
+      </operator>
+      <connect from_op="Retrieve Final_model_attribute_weights" from_port="output" to_op="Weights to Data" to_port="attribute weights"/>
+      <connect from_op="Weights to Data" from_port="example set" to_op="Write Excel" to_port="input"/>
+      <connect from_op="Retrieve Topic_list" from_port="output" to_op="Write Excel (2)" to_port="input"/>
+      <connect from_op="Write Excel (2)" from_port="through" to_port="result 2"/>
+      <connect from_op="Write Excel" from_port="through" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+      <description align="center" color="yellow" colored="false" height="69" resized="true" width="320" x="211" y="333">Finally, this is a support process which aim is to export some data to Excel in order to easy print plots.</description>
+    </process>
+  </operator>
+</process>
