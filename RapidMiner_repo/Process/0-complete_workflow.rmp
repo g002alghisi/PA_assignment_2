@@ -87,6 +87,8 @@
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
       <portSpacing port="sink_result 3" spacing="0"/>
+      <description align="center" color="yellow" colored="false" height="58" resized="true" width="314" x="172" y="359">This task allows to orderly execute all the other ones, in order to automatize the entire process.</description>
+      <description align="center" color="purple" colored="true" height="124" resized="true" width="683" x="10" y="420">If it is desired to run the &amp;quot;limited&amp;quot; analysis (i.e. considering the very smal portion of the dataset extracted by means of the process 1b-getting_smaller_dataset), then the relative Execute block should be added in between Execute 1a and Execute 2. The different links between the Execute blocks are used only tho trigger the next stage once the previous is terminated, but they are not used to feed the results of one stage to the next one; thus, to execute the &amp;quot;limited&amp;quot; analysis, the Execute 2 block needs to be adjusted, in particular the Retrive block should point to the Videogame_reviews_small table, located in the Data folder.&lt;br&gt;</description>
     </process>
   </operator>
 </process>

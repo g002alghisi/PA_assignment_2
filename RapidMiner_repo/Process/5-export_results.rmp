@@ -46,7 +46,7 @@
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
       <portSpacing port="sink_result 3" spacing="0"/>
-      <description align="center" color="yellow" colored="false" height="69" resized="true" width="320" x="211" y="333">Finally, this is a support process which aim is to export some data to Excel in order to easy print plots.</description>
+      <description align="center" color="yellow" colored="false" height="51" resized="true" width="357" x="192" y="321">Finally, this is a support process which aim is to export some data to Excel in order to easy print plots.</description>
     </process>
   </operator>
 </process>
