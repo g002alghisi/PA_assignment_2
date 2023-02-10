@@ -79,7 +79,8 @@
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
-      <description align="center" color="yellow" colored="true" height="56" resized="true" width="384" x="167" y="167">There are 2 different splits because splitting the dataset with a single operation causes the system to run out of memory</description>
+      <description align="center" color="red" colored="true" height="56" resized="true" width="384" x="137" y="278">There are 2 different splits because splitting the dataset with a single operation causes the system to run out of memory</description>
+      <description align="center" color="yellow" colored="true" height="96" resized="true" width="519" x="63" y="161">This is a support process; to avoid the processing a huge amount of data (at least for my PC), this task has been prepared in order to develope all the successive processes and test them quickly. The aim is just to split the big original dataset into a small sample and precess it.After that, the original dataset has been used.</description>
     </process>
   </operator>
 </process>

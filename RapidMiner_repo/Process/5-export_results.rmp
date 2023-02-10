@@ -13,11 +13,11 @@
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
       <operator activated="true" class="retrieve" compatibility="9.7.002" expanded="true" height="68" name="Retrieve Final_model_attribute_weights" width="90" x="112" y="34">
-        <parameter key="repository_entry" value="//PA_assignment_2/Data/Final_model_attribute_weights"/>
+        <parameter key="repository_entry" value="../Data/Final_model_attribute_weights"/>
       </operator>
       <operator activated="true" class="weights_to_data" compatibility="9.7.002" expanded="true" height="68" name="Weights to Data" width="90" x="246" y="34"/>
       <operator activated="true" class="retrieve" compatibility="9.7.002" expanded="true" height="68" name="Retrieve Topic_list" width="90" x="246" y="187">
-        <parameter key="repository_entry" value="//PA_assignment_2/Data/Topic_list"/>
+        <parameter key="repository_entry" value="../Data/Topic_list"/>
       </operator>
       <operator activated="true" class="write_excel" compatibility="9.7.002" expanded="true" height="103" name="Write Excel (2)" width="90" x="380" y="187">
         <parameter key="excel_file" value="C:/Users/Alghisi/Documents/GitHub/PA_assignement_2/RapidMiner_repo/Results/topic_list.xlsx"/>
@@ -46,6 +46,7 @@
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
       <portSpacing port="sink_result 3" spacing="0"/>
+      <description align="center" color="yellow" colored="false" height="69" resized="true" width="320" x="211" y="333">Finally, this is a support process which aim is to export some data to Excel in order to easy print plots.</description>
     </process>
   </operator>
 </process>
