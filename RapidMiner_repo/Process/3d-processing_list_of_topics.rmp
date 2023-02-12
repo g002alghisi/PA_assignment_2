@@ -95,7 +95,7 @@
       </operator>
       <operator activated="true" class="open_file" compatibility="9.7.002" expanded="true" height="68" name="Open topic_title_list.txt" width="90" x="45" y="238">
         <parameter key="resource_type" value="file"/>
-        <parameter key="filename" value="C:/Users/Alghisi/Documents/GitHub/PA_assignement_2/RapidMiner_repo/Process/topic_title_list.txt"/>
+        <parameter key="filename" value="C:/Users/Alghisi/Documents/GitHub/PA_assignment_2/RapidMiner_repo/Process/topic_title_list.txt"/>
       </operator>
       <operator activated="true" class="text:read_document" compatibility="9.4.000" expanded="true" height="68" name="Read Document" width="90" x="179" y="238">
         <parameter key="extract_text_only" value="true"/>

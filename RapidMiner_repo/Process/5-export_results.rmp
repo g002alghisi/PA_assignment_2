@@ -20,7 +20,7 @@
         <parameter key="repository_entry" value="../Data/Topic_list"/>
       </operator>
       <operator activated="true" class="write_excel" compatibility="9.7.002" expanded="true" height="103" name="Write Excel (2)" width="90" x="380" y="187">
-        <parameter key="excel_file" value="C:/Users/Alghisi/Documents/GitHub/PA_assignement_2/RapidMiner_repo/Results/topic_list.xlsx"/>
+        <parameter key="excel_file" value="C:/Users/Alghisi/Documents/GitHub/PA_assignment_2/RapidMiner_repo/Results/topic_list.xlsx"/>
         <parameter key="file_format" value="xlsx"/>
         <enumeration key="sheet_names"/>
         <parameter key="sheet_name" value="RapidMiner Data"/>
@@ -29,7 +29,7 @@
         <parameter key="encoding" value="SYSTEM"/>
       </operator>
       <operator activated="true" class="write_excel" compatibility="9.7.002" expanded="true" height="103" name="Write Excel" width="90" x="380" y="34">
-        <parameter key="excel_file" value="C:/Users/Alghisi/Documents/GitHub/PA_assignement_2/RapidMiner_repo/Results/attribute_weigths.xlsx"/>
+        <parameter key="excel_file" value="C:/Users/Alghisi/Documents/GitHub/PA_assignment_2/RapidMiner_repo/Results/attribute_weigths.xlsx"/>
         <parameter key="file_format" value="xlsx"/>
         <enumeration key="sheet_names"/>
         <parameter key="sheet_name" value="RapidMiner Data"/>
